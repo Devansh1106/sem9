@@ -1,0 +1,71 @@
+\documentclass[12pt]{report}
+\renewcommand\bibname{References}
+\usepackage[a4paper, width=150mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{mathtools}
+
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+% \fancyhead{}
+\fancyhead[L]{\small\leftmark}
+\fancyhead[R]{}
+\graphicspath{attachments/}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+% ==========================================================================
+% Maths commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\theoremstyle{plain}
+\newtheorem*{thm*}{Theorem}
+%% this allows for theorems which are not automatically numbered
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{eg}{Example}
+\newtheorem{rem}{Remark}
+
+% Symbols
+\newcommand{\bb}[1]{\mathbb{#1}}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+
+% =========================================================================.
+
+
+
+
+
+\title{Measure-Valued solutions of Euler System}
+
+\author{
+    {\textbf{Notes by}}\\Devansh Tripathi\\{Reg. No. IMS22090}\\{IISER Thiruvananthapuram,}\\{Kerala, India}\\[1 cm]
+}
+% \date{}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Preliminaries}
+\input{chapters/prelims.tex}
+
+\end{document}

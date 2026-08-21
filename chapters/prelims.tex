@@ -1,0 +1,188 @@
+%=========================================================================================
+% chapters/01_chapter1.tex
+%=========================================================================
+
+\label{ch:preliminaries}
+We denote a general Banach space with $X$ with norm $\|\cdot\|_{X}$ thorughout this section. $X*$ denoted the dual of the space $X$ and duality pairing between $X$ and $X*$ will be given by $\langle \cdot \rangle_{X*, X}$. We use $\langle \cdot;\cdot\rangle$ to indicate the inner product in $X$.
+
+When $X = L^p(\Omega), 1 \leq p \leq \infty$, we assume that $\Omega \subset \R^d$ is bounded and measurable. The norm is denoted by $\|\cdot\|_{L^p}$ or $\|\cdot\|_p$. Further, $|A|$ denotes the Lebesgue measure of a subset $A \subset \Omega$.
+
+\begin{defn}[Weak and Weak-* Convergence]
+    We say that a sequence $\{x_n\}_{n\in \N} \subset X$ converges weakly to $x\in X$, denoted by $x_n \rightharpoonup x,$ if 
+    $$ \langle x^*, x_n\rangle_{X^*, X} \to \langle x^*, x\rangle_{X^*, X} \text{ for any } x^* \in X^* \text{ as } n\to \infty.$$
+    We say that a sequence $\{x_n^*\}_{n \in \N} \subset X^*$ converges weakly-* to $x^* \in X^*$, denoted by $x_n^* \rightharpoonup{*} x$, if 
+    $$\langle x_n^*, x\rangle_{X^*, X} \to \langle x^*, x\rangle_{X^*, X} \text{ for any } x \in X \text{ as }n\to \infty.$$ 
+\end{defn}
+
+\section{Weak Compactness in Banach Spaces}
+\begin{thm}[Alaoglu's Theorem]\label{thm:alaoglu}
+    Let $X$ be a Banach space. Then the unit ball of $X^*$, $B_{X^*}$, is weakly-* compact. Further. if $X$ is separable, then the subspace topology induced on $B_{X^*}$ via the weak-* topology is metrizable. If $X$ is reflexive, then the unit ball of $X$, $B_X$, is weakly compact.
+\end{thm}
+\begin{thm}[Banach-Eberlein-Smulian Theorem]\label{thm:bes}
+    Let $X$ be a Banach space.
+    \begin{enumerate}
+        \item $X$ is reflexive if and only if every uniformly bounded sequence in $X$ has a weakly convergent subsequence.
+        \item If $X$ is separable, then every uniformly bounded sequence in $X^*$ has a weakly-* convergent subsequence.
+    \end{enumerate}
+\end{thm}
+\subsection{Weak compactness in \texorpdfstring{$L^p$}{L\^p}}
+The dual space of $L^p(\Omega)$ is the space $L^q(\Omega),$ where $\frac{1}{p} + \frac{1}{q} = 1$ for $1 \leq p < \infty$, with the duality pairing
+$$ \langle f,g\rangle_{q,p} = \int_{\Omega} f(y)g(y) dy, \quad f\in L^q(\Omega) \text{ and } g\in L^p(\Omega).$$
+Since $L^p$ is separable for $1 \leq p <\infty$ and reflexive for $1 < p < \infty$, we have the following characterization result for $1 < p \leq \infty$.
+
+\begin{lem}[Weak Compactness in \texorpdfstring{$L^p$}{L\^p}]\label{lem:wcl1}
+    For $1 < p \leq \infty$, let $\{f_n\}_{n \in \N} \subset L^p(\Omega)$ be uniformly bounded. Then, there exists a subsequence $\{f_{n_k}\}_{k \in \N}$ and $f\in L^p(\Omega)$ such that 
+    \begin{align*}
+        &f_{n_k} \rightharpoonup f \text{ in } L^p(\Omega), \quad \text{ if } 1 < p < \infty, \\
+        &f_{n_k} \xrightharpoonup{*} f \text{ in } L^\infty(\Omega), \quad \text{ if } p = \infty
+    \end{align*}
+\end{lem}
+\begin{proof}
+    (Proof Idea): The existence of subsequence for $1 < p < \infty$ is a direct consequence of \ref{thm:bes} since in this case $L^p$ is reflexive. For the case when $p=\infty$, $L^\infty$ is separable hence from \ref{thm:alaoglu}, the weak-* topology is metrizable. The notion of compactness is same as sequencial compactness, giving us the required weakly-* convergent subsequence. 
+\end{proof}
+
+\subsubsection*{Weak compactness in \texorpdfstring{$L^1$}{L^1}}
+The Lemma \ref{lem:wcl1} is not applicable in the case of $p=1$ due to the lack of reflexivity of $L^1(\Omega)$. We also cannot use separability of $L^1(\Omega)$ and theorem \ref{thm:alaoglu} since there does not exists a predual in the case of $L^1(\Omega)$.
+
+However, we can use the embedding $L^1(\Omega) \hookrightarrow {\cal M}(\bar{\Omega})$, where ${\cal M}(\bar{\Omega})$ denotes the Banach space of finite Radon measures on $\Omega$ identified as the dual of $C(\bar{\Omega})$ and have the following result:
+
+\begin{lem}\label{lem:l1_convergence}
+    Let $\{f_n\}_{n \in \N} \subset L^1(\Omega)$ be uniformly bounded. Then, there exists $\mu \in {\cal M}(\bar{\Omega})$ and a subsequence $\{f_{n_k}\}_{k \in \N}$ such that
+    $$ f_{n_k} \xrightharpoonup{*} {\cal M}(\bar{\Omega}).$$    
+\end{lem}
+\begin{rem}
+    Given $\{\mu_n\}_{n\in \N} \subset {\cal M}({\bar{\Omega}}),$ we say that
+    $$\mu_n \xrightharpoonup{*} \mu \text{ in } {\cal M}(\bar{\Omega}), \text{ if } \int_{\Omega} \phi d\mu_n \to \int_{\Omega} \phi d\mu \text{ for all } \phi \in C(\bar{\Omega}).$$    
+\end{rem}
+
+Lemma \ref{lem:l1_convergence} provides the weak convergence of a uniformly bounded sequence of functions belonging to $L^1(\Omega)$ to a limit in ${\cal M}(\Omega)$. For the weak convergence of the sequence to a limit in $L^1$, we need the notion of equiintegrability which is defined as follows:
+
+\begin{defn}[Equiintegrability]
+    A family of functions ${\cal F} \subset L^1(\Omega)$ is said to be equiintegrable if for every $\varepsilon > 0$, there exists $\delta_{\varepsilon} > 0$ such that
+    $$ \sup_{f \in {\cal F}} \int_A |f| dy < \varepsilon \text{ whenever } A \subset \Omega \text{ is measurable and } |A| < \delta_{\varepsilon}.$$ 
+\end{defn}
+
+If a seqeunce of $L^1(\Omega)$ functions is equiintegrable, then the sequence does not develop concentrations (means sequence does not `blow up' locally).
+
+Complete characterization of weak convergence of sequences in $L^1(\Omega)$:
+\begin{lem}[Weak Convergence in $L^1$]
+    Let $\{f_n\}_{n \in \N} \subset L^1(\Omega)$. The following are equivalent:
+    \begin{enumerate}
+        \item $\{f_n\}_{n \in \N}$ has a weakly convergent subsequence;
+        \item $\{f_n\}_{n \in \N}$ is uniformly bounded and equiintegrable;
+        \item (Dunford-Pettis criterion) for any $\varepsilon > 0$, there exists $k \in \N$ such that $$ \sup_{n \in \N} \int_{\{|f_n| \geq k\}} |f_n| dy < \varepsilon;$$
+        \item (De La Vall\'e Poussin's Criterion) there exists a non-negative function $\psi:[0, \infty] \to \R$ such that \begin{enumerate}
+            \item $\psi$ is superlinear, i.e. $$ \lim_{\lambda \to \infty} \frac{\psi(\lambda)}{\lambda} = \infty, $$
+            \item the condition $$\sup_{n \in \N} \int_{\Omega} \psi(|f_n|) dy < \infty$$ holds.
+        \end{enumerate}
+    \end{enumerate}
+\end{lem}
+
+
+
+\section{Measureability of Banach-valued functions}
+Let $X$ be a Banach space and $f:\Omega \to X$ be a Banach-valued function. The points of $\Omega$ will be denoted by $y$ and elements of $X$ will be denoted by $x$.
+
+\begin{defn}[Simple Function]
+    A function $s : \Omega \to X$ is said to be a simple function if there exists measurable subsets $\Omega_1, \dots, \Omega_k \subset \Omega$ and elements $x_1, \dots, x_k \in X$ such that 
+    $$ s(y) = \sum_{i=1}^{k} \chi_{\Omega_i}(y) x_i,$$
+    where $\chi_{\Omega_i}$ denotes the characteristic function of $\Omega_i$. The integral of a simple function is defined as 
+    $$ \int_\Omega s(y) dy = \sum_{i=1}^{k}|\Omega_i|x_k.$$
+\end{defn}
+
+\begin{defn}[Strong Measurable/Bochner Measurable]
+    $f$ is said to be strongly measurable if there exists a sequence of simple functions $\{f_n\}_{n=1}^{\infty}$ such that for each $y \in \Omega$, $$\|f_n(y) - f(y)\|_{X} \to 0 \quad \text{ as } n \to \infty \quad a.e.\ y \in \Omega.$$.
+\end{defn}
+
+\begin{defn}[Weakly measurable]
+    $f$ is said to be weakly measurable if the map $y \mapsto \langle x^*, f(y) \rangle_{X^*, X}$ is Lebesgue measurable for each $x^* \in X^*$.
+\end{defn}
+\begin{defn}[Weakly-* measurable]
+    Let $X^*$ be the dual space of $X$. A map $f:\Omega \to X^*$ is weakly-* measurable if the map $y \mapsto \langle f(y), x\rangle_{X^*, X} $ is Lebesgue measurable for each $x \in X$.
+\end{defn}
+\begin{rem}
+    Let $(X, {\cal A}) \text{ and } (Y, {\cal B})$ be measurable spaces and a map $f:X \to Y$ is $({\cal A, B})$-measurable if $f^{-1}(B) \in {\cal A} \text{ for all } B \in {\cal B}$. 
+\end{rem}
+
+\subsection{Function Spaces involving Banach Space-Valued Maps}
+
+\begin{defn}[Space of Weakly continuous functions ($C_{weak}(\Omega; X)$)]
+    $f:\Omega \to X$ is weakly continuous if:
+    \begin{itemize}
+        \item the map $y \mapsto \|f(y)\|_{X}$ is bounded,
+        \item for each $x^* \in X^*$, the map $y \mapsto \langle x^*, f(y)\rangle_{X^*, X}$ is continuous.
+    \end{itemize} 
+    The norm is defined as
+    $$\|f\|_{C_{weak}(\Omega;X)} = \sup_{y \in \Omega} \|f(y)\|_{X}$$
+\end{defn}
+\begin{defn}[Bochner Spaces]
+
+    Let $f:\Omega \to X$ be a given Banach-valued function.
+    \begin{enumerate}
+        \item We say $f\in L^p(\Omega; X)$ (called strongly measurable) if the quantity \begin{equation} \label{eq:norm_}
+            \begin{cases}
+                \displaystyle \int_{\Omega} \|f(y)\|^p_{X}\, dy, \quad \qquad \text{ if } 1 \leq p < \infty \\
+                \esssup_{y \in \Omega} \|f(y)\|_{X}, \quad \text{ if } p = \infty
+            \end{cases}
+        \end{equation}
+        is finite. The norm on $L^p(\Omega; X)$ is defined as \begin{equation} \label{eq:norm}
+            \|f\|_{L^p(\Omega; X)} = \begin{cases}
+                                        \left(\displaystyle\int_{\Omega} \|f(y)\|^p_{X}\, dy\right)^{1/p}, \quad \qquad \text{ if } 1 \leq p < \infty \\
+                                        \esssup_{y \in \Omega} \|f(y)\|_{X}, \quad \text{ if } p = \infty
+                                    \end{cases}
+        \end{equation}
+        \item We say $f\in L^p_{weak}(\Omega; X)$ is weakly measurable, if \begin{enumerate}
+            \item the map $y \mapsto \|f(y)\|_{X}$ is measurable.
+            \item quantities defined in \ref{eq:norm_} are finite. The norm is defined same as in \ref{eq:norm}.
+        \end{enumerate}
+        \item We say $f\in L^p_{weak-^*}(\Omega; X^*)$ is weakly-* measurable, if \begin{enumerate}
+            \item the map $y \mapsto \|f(y)\|_{X^*}$ is measurable.
+            \item The quantity \begin{equation}
+                \begin{cases}
+                    \displaystyle \int_{\Omega} \|f(y)\|^p_{X^*} \, dy, \quad \qquad \text{ if } 1 \leq p < \infty \\
+                    \esssup_{y \in \Omega} \|f(y)\|_{X^*}, \quad \text{ if } p = \infty
+                \end{cases}
+        \end{equation}
+        \end{enumerate}
+        is finite. The norm on $L^p_{weak-*}(\Omega; X^*)$ is defined as: \begin{equation} \label{eq:norm*}
+            \|f\|_{L^p_{weak-^*}(\Omega; X^*)} = \begin{cases}
+                                        \left(\displaystyle\int_{\Omega} \|f(y)\|^p_{X^*}\, dy\right)^{1/p}, \quad \text{ if } 1 \leq p < \infty \\
+                                        \esssup_{y \in \Omega} \|f(y)\|_{X^*}, \quad \quad \text{ if } p = \infty
+                                    \end{cases}
+        \end{equation}
+    \end{enumerate}
+\end{defn}
+
+The characterization of dual spaces of $L^p(\Omega; X)$ when $X$ is separable is as follows:
+\begin{thm}[Duality of $L^p(\Omega; X)$]
+    Let $X$ be a separable Banach space and let $1 \leq p < \infty$ with $1/p + 1/q = 1$. Then, 
+    $$[L^p(\Omega; X)]^* = L^q_{weak-^*}(\Omega; X^*),$$
+    with the duality action defined as 
+    $$ \langle g,f\rangle_{L^q_{weak-^*}(\Omega;X^*), L^p(\Omega; X)} = \displaystyle \int_\Omega \langle g(y), f(y) \rangle_{X^*, X}\, dy,$$
+    for any $g \in L^q_{weak-^*}(\Omega;X^*)$ and $f \in L^p(\Omega; X).$
+    If $X$ is reflexive, then
+    $$ [L^p(\Omega;X)]^* = L^q(\Omega; X^*).$$
+\end{thm}
+
+\section{Young Measures}
+One of the key applications of Young measure in nonlinear analysis is the capturing of oscillations of weakly convergent sequences in $L^1$.
+
+\sloppy A Young measure is a family of probability measures $\nu = \{\nu_y\}_{y \in \Omega} \in L^\infty_{weak-^*}(\Omega; {\cal M}(\R^k))$ associated to a sequence $f_n : \Omega \to \R^k$ such that $\text{supp}(\nu_y) \subset \R^k$ and they depend measurably for $y \in \Omega$, which means that for any bounded continuous function $\phi : \R^k \to \R$, the function
+\begin{equation}\label{eq:phi_bar}
+    \bar{\phi}(y) = \displaystyle \int_{\R^k} \phi(\lambda)\, d\nu_y(\lambda) =: \langle \nu_y, \phi \rangle 
+\end{equation}
+is measurable for every $y \in \Omega$. 
+
+Moreover, if we consider the composite sequence $\phi(f_n) : \Omega \to \R$ and assume that the sequence $\{\phi(f_n)\}_{n \in \N}$ converges weakly in $L^1(\Omega)$, then weak limit will precisely be the function given by \ref{eq:phi_bar}.
+
+\begin{rem}
+    Basically for any bounded, continuous function $\phi$, the action $\langle \nu_y, \phi \rangle$ is measurable for every $y \in \Omega$. 
+\end{rem}
+
+\begin{defn}[Carath\'eodary Function]
+    A map $\psi : \Omega \times \R^k \to [-\infty, \infty]$ is a Carath\'eodary function if it is measurable in the first variable and continuous in the other variable i.e.
+    \begin{enumerate}
+        \item The map $\psi_{\lambda_0}(y) = \psi(y, \lambda_0)$ is measurable for each $\lambda_0 \in \R^k.$ 
+        \item The map $\psi_{y_0}(\lambda) = \psi(y_0, \lambda)$ is continuous for each $y_0 \in \Omega.$
+    \end{enumerate}
+\end{defn}
